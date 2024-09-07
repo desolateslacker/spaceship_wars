@@ -1,0 +1,39 @@
+[package]
+name = "spaceship_wars"
+version = "0.1.0"
+edition = "2021"
+exclude = ["dist", "build", "assets", "credits"]
+
+[profile.dev.package."*"]
+opt-level = 3
+ 
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dist]
+inherits = "release"
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[features]
+dev = [
+        "bevy/dynamic_linking",
+]
+
+
+[dependencies]
+bevy = { version = "0.14" }
+rand = { version = "0.8" }
+webbrowser = { version = "1", features = ["hardened"] }
+bevy_mod_picking = { version = "0.20", features = ["backend_avian"] }
+avian3d = "0.1"
+log = { version = "0.4", features = ["max_level_debug", "release_max_level_warn"] }
+bevy_vector_shapes = "0.8"

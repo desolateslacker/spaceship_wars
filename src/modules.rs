@@ -14,8 +14,8 @@ struct ModuleSize(f32);
 impl Plugin for ModulesPlugin {
     fn build(&self, app: &mut App) {
         app
-            .insert_resource(ModuleSize(50_f32));
-            //.add_systems(Update, draw_modules);
+            .insert_resource(ModuleSize(50_f32))
+            .add_systems(Update, draw_modules);
     }
 }
 
@@ -25,14 +25,15 @@ pub fn draw_modules(
 ) {
     modules.iter().for_each(| (tf, module) | {
         painter.reset();
-        painter.set_translation(tf.translation);
+        painter.set_translation(tf.translation);/*
         match module.name.as_str() {
             "simple_hull" => {
                 painter.set_color(GREEN);
                 painter.rect(Vec2::new(2. * 50., 2. * 50.));
             },
             _ => panic!(),
-        }
+        }*/
+        painter.circle(1.);
     })
 }
 

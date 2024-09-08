@@ -21,7 +21,7 @@ impl Plugin for ModulesPlugin {
 
 pub fn draw_modules(
     mut painter: ShapePainter,
-    modules: Query<(&Transform, &Module)>,
+    //modules: Query<(&Transform, &Module)>,
 ) {
     //painter.circle(5.);
     /*

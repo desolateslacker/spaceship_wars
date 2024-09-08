@@ -1,10 +1,10 @@
-mod modules;
+//mod modules;
 
 use bevy::{
     prelude::*,
     app::App,
 };
-use crate::modules::*;//ModulesPlugin;
+//use crate::modules::*;//ModulesPlugin;
 pub struct GamePlugin;
 
 #[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
@@ -18,9 +18,9 @@ enum GameState {
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app
-            .init_state::<GameState>()
-            .add_plugins(ModulesPlugin)
-            .add_systems(Startup, test);
+            .init_state::<GameState>();
+            //.add_plugins(ModulesPlugin)
+            //.add_systems(Startup, test);
 
 
     }

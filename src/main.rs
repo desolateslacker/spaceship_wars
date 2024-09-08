@@ -2,7 +2,7 @@ use bevy::{
     prelude::*,
     asset::AssetMetaCheck,
 };
-//use spaceship_wars::GamePlugin;
+use spaceship_wars::GamePlugin;
 
 fn main() {
     App::new()
@@ -25,6 +25,6 @@ fn main() {
                     ..default()
                 })
         )
-        //.add_plugins(GamePlugin)
+        .add_plugins(GamePlugin)
         .run();
 }

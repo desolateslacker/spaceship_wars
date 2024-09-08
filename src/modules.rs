@@ -23,7 +23,7 @@ pub fn draw_modules(
     mut painter: ShapePainter,
     modules: Query<(&Transform, &Module)>,
 ) {
-    painter.circle(5.);
+    //painter.circle(5.);
     /*
     modules.iter().for_each(| (tf, module) | {
         painter.reset();

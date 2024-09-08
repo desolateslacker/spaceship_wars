@@ -23,6 +23,8 @@ pub fn draw_modules(
     mut painter: ShapePainter,
     modules: Query<(&Transform, &Module)>,
 ) {
+    painter.circle(5.);
+    /*
     modules.iter().for_each(| (tf, module) | {
         painter.reset();
         painter.set_translation(tf.translation);/*
@@ -34,7 +36,7 @@ pub fn draw_modules(
             _ => panic!(),
         }*/
         painter.circle(1.);
-    })
+    })*/
 }
 
 #[derive(Component)]

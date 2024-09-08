@@ -25,9 +25,10 @@ impl Plugin for GamePlugin {
 
     }
 }
-
+/*
 fn test(
     mut commands: Commands,
 ) {
     commands.spawn(ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(0.,0.,0.)));
 }
+*/

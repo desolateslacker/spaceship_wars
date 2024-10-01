@@ -14,8 +14,8 @@ struct ModuleSize(f32);
 impl Plugin for ModulesPlugin {
     fn build(&self, app: &mut App) {
         app
-            .insert_resource(ModuleSize(50_f32))
-            .add_systems(Update, draw_modules);
+            .insert_resource(ModuleSize(50_f32));
+            //.add_systems(Update, draw_modules);
     }
 }
 

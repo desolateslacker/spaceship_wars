@@ -19,16 +19,6 @@ impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app
             .init_state::<GameState>()
-            .add_plugins(ModulesPlugin)
-            .add_systems(Startup, test);
-
-
+            .add_plugins(ModulesPlugin);
     }
 }
-
-fn test(
-    mut commands: Commands,
-) {
-    commands.spawn(ModulesPlugin::ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(0.,0.,0.)));
-}
-

@@ -14,9 +14,17 @@ struct ModuleSize(f32);
 impl Plugin for ModulesPlugin {
     fn build(&self, app: &mut App) {
         app
-            .insert_resource(ModuleSize(50_f32));
+            .insert_resource(ModuleSize(50_f32))
+            .add_systems(Startup, test);
             //.add_systems(Update, draw_modules);
     }
+}
+
+
+fn test(
+    mut commands: Commands,
+) {
+    commands.spawn(ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(0.,0.,0.)));
 }
 
 pub fn draw_modules(

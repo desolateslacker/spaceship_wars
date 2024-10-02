@@ -38,20 +38,20 @@ pub fn draw_modules(
     mut painter: ShapePainter,
     modules: Query<(&Transform, &Module)>,
 ) {
-    painter.circle(5.);
-    /*
+    //painter.circle(5.);
+    
     modules.iter().for_each(| (tf, module) | {
         painter.reset();
-        painter.set_translation(tf.translation);/*
+        painter.set_translation(tf.translation);
         match module.name.as_str() {
             "simple_hull" => {
                 painter.set_color(GREEN);
                 painter.rect(Vec2::new(2. * 50., 2. * 50.));
             },
             _ => panic!(),
-        }*/
+        }
         painter.circle(1.);
-    })*/
+    })
 }
 
 #[derive(Component)]

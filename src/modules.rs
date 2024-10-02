@@ -33,6 +33,10 @@ fn test(
         transform: Transform::from_translation(Vec3::Z*10.),
         ..default()
     });
+    commands.spawn(
+        RigidBody::Dynamic,
+        Collider::cuboid(50.0, 50.0, 5.0),
+    );
     commands.spawn(ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(0.,0.,0.)));
 }
 

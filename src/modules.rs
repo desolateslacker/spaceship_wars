@@ -16,9 +16,10 @@ impl Plugin for ModulesPlugin {
         app
             .add_plugins(PhysicsPlugins::default())
             .add_plugins(PhysicsDebugPlugin::default())
+            .add_plugins(Shape2dPlugin::default())
             .insert_resource(ModuleSize(50_f32))
             .add_systems(Startup, test);
-            //.add_systems(Update, draw_modules);
+            .add_systems(Update, draw_modules);
     }
 }
 
@@ -35,9 +36,9 @@ fn test(
 
 pub fn draw_modules(
     mut painter: ShapePainter,
-    //modules: Query<(&Transform, &Module)>,
+    modules: Query<(&Transform, &Module)>,
 ) {
-    //painter.circle(5.);
+    painter.circle(5.);
     /*
     modules.iter().for_each(| (tf, module) | {
         painter.reset();

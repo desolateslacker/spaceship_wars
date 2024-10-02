@@ -14,6 +14,7 @@ struct ModuleSize(f32);
 impl Plugin for ModulesPlugin {
     fn build(&self, app: &mut App) {
         app
+            .add_plugins(PhysicsPlugins::default())
             .add_plugins(PhysicsDebugPlugin::default())
             .insert_resource(ModuleSize(50_f32))
             .add_systems(Startup, test);

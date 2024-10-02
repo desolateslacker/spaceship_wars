@@ -28,7 +28,7 @@ fn test(
 ) {
     commands.spawn(Camera2dBundle {
         transform: Transform::from_translation(Vec3::Z*10.),
-        ..default(),
+        ..default()
     });
     commands.spawn(ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(0.,0.,0.)));
 }

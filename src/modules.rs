@@ -110,7 +110,7 @@ impl Module {
         Module {
             name: name.clone(),
             shape: shape.clone(),
-            collider: Self::shape_to_collider(shape.clone(), 50.),
+            collider: Collider::cuboid(50.0, 50.0, 5.0),//Self::shape_to_collider(shape.clone(), 50.),
         }
     }
 

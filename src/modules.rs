@@ -4,7 +4,7 @@ use bevy::{
 };
 use bevy_vector_shapes::prelude::*;
 use avian3d::prelude::*;
-//use bevy_mod_picking::prelude::*;
+use bevy_mod_picking::prelude::*;
 
 pub struct ModulesPlugin;
 
@@ -17,6 +17,8 @@ impl Plugin for ModulesPlugin {
             .add_plugins(PhysicsPlugins::default())
             .add_plugins(PhysicsDebugPlugin::default())
             .add_plugins(Shape2dPlugin::default())
+            .add_plugins(DefaultPickingPlugins)
+            .insert_resource(DebugPickingMode::Noisy)
             .insert_resource(ModuleSize(50_f32))
             .add_systems(Startup, test)
             .add_systems(Update, draw_modules);
@@ -50,7 +52,7 @@ pub fn draw_modules(
             },
             _ => panic!(),
         }
-        painter.circle(1.);
+        //painter.circle(1.);
     })
 }
 

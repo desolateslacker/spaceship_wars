@@ -18,7 +18,7 @@ impl Plugin for ModulesPlugin {
             .add_plugins(PhysicsDebugPlugin::default())
             .add_plugins(Shape2dPlugin::default())
             .insert_resource(ModuleSize(50_f32))
-            .add_systems(Startup, test);
+            .add_systems(Startup, test)
             .add_systems(Update, draw_modules);
     }
 }

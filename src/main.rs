@@ -3,7 +3,7 @@ use bevy::{
     asset::AssetMetaCheck,
 };
 use spaceship_wars::GamePlugin;
-
+use bevy_mod_picking::prelude::*;
 fn main() {
     App::new()
         .insert_resource(Msaa::Off)

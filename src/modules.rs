@@ -20,6 +20,7 @@ impl Plugin for ModulesPlugin {
             .add_plugins(DefaultPickingPlugins)
             .insert_resource(DebugPickingMode::Noisy)
             .insert_resource(ModuleSize(50_f32))
+            .insert_resource(Gravity(Vec3::NEG_Y * 10.))
             .add_systems(Startup, test)
             .add_systems(Update, draw_modules);
     }
@@ -33,10 +34,12 @@ fn test(
         transform: Transform::from_translation(Vec3::Z*10.),
         ..default()
     });
+    /*
     commands.spawn((
         RigidBody::Dynamic,
         Collider::cuboid(50.0, 50.0, 5.0),
     ));
+    */
     ModuleBundle::spawn_module(commands,"simple_hull".to_string(), Transform::from_xyz(100.,0.,0.));
     //commands.spawn(ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(100.,0.,0.)));//, Collider::cuboid(50.0, 50.0, 5.0)));
 }
@@ -115,6 +118,13 @@ impl ModuleBundle {
             Self::new(name, pos),
             PickableBundle::default(),
             On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
+            On::<Pointer<DragEnd>>::target_insert(RigidBody::Dynamic),
+            On::<Pointer<Drag>>::target_component_mut::<Transform>(|drag, transform| {
+                transform.translation.x += drag.delta.x;
+                transform.translation.y -= drag.delta.y;
+                //info! ("dd - {:?}", drag.delta);
+            }),
+));
         ));
     }
 

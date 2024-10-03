@@ -97,7 +97,7 @@ impl ModuleBundle {
     pub fn new(module_name: String, transform: Transform) -> Self {
         let module = Module::new(module_name);
         ModuleBundle {
-            module: module.clone(),
+            module: module,
             transform: transform,
             rigid_body: RigidBody::Dynamic,
             facing: Facing::Up,

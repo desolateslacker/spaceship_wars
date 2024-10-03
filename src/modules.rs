@@ -124,7 +124,6 @@ impl ModuleBundle {
                 transform.translation.y -= drag.delta.y;
                 //info! ("dd - {:?}", drag.delta);
             }),
-));
         ));
     }
 

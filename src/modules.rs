@@ -101,7 +101,7 @@ impl ModuleBundle {
             rigid_body: RigidBody::Dynamic,
             facing: Facing::Up,
             shape: Self::name_to_shape(module_name),
-            collider: Self::shape_to_collider(shape, 50_f32),
+            collider: Self::shape_to_collider(Self::name_to_shape(module_name), 50_f32),
             //Collider::cuboid(50.0, 50.0, 5.0),
         }
     }

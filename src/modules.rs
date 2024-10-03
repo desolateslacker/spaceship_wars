@@ -90,7 +90,6 @@ enum ModuleShape {
 #[derive(Bundle)]
 pub struct ModuleBundle {
     module: Module,
-    transform: Transform,
     rigid_body: RigidBody,
     facing: Facing,
     shape: ModuleShape,
@@ -101,7 +100,6 @@ impl ModuleBundle {
     pub fn new(module_name: String, transform: Transform) -> Self {
         ModuleBundle {
             module: Module::new(module_name.clone()),
-            transform,
             rigid_body: RigidBody::Dynamic,
             facing: Facing::Up,
             shape: Self::name_to_shape(module_name.clone()),
@@ -116,6 +114,7 @@ impl ModuleBundle {
     ) {
         commands.spawn((
             Self::new(name, pos),
+            TransformBundle::default(),
             PickableBundle::default(),
             On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
             On::<Pointer<DragEnd>>::target_insert(RigidBody::Dynamic),

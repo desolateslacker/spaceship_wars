@@ -103,12 +103,10 @@ impl ModuleBundle {
             facing: Facing::Up,
             shape: Self::name_to_shape(module_name.clone()),
             collider: Self::shape_to_collider(Self::name_to_shape(module_name), 50_f32),
-            pickable: PickableBundle::default(),
-            on_drag: On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
         }
     }
 
-    pub spawn_module(
+    pub fn spawn_module(
         mut commands: Commands,
         name: String,
         pos: Transform,

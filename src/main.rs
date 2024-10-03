@@ -10,6 +10,7 @@ fn main() {
         .insert_resource(ClearColor(Color::linear_rgb(0.4, 0.4, 0.4)))
         .add_plugins(
             DefaultPlugins
+                .set(low_latency_window_plugin())
                 .set(WindowPlugin {
                     primary_window: Some(Window {
                         title: "Spaceship Wars".to_string(),

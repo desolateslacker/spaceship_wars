@@ -64,7 +64,6 @@ pub fn draw_modules(
 pub struct Module {
     name: String,
     shape: ModuleShape,
-    collider: Collider,
 }
 
 #[derive(Component)]
@@ -101,25 +100,7 @@ impl ModuleBundle {
             transform: transform,
             rigid_body: RigidBody::Dynamic,
             facing: Facing::Up,
-            collider: Collider::cuboid(50.0, 50.0, 5.0),
-        }
-    }
-}
-
-impl Module {
-    fn new(name: String) -> Self {
-        let shape = Self::name_to_shape(name.clone());
-        Module {
-            name: name.clone(),
-            shape: shape.clone(),
-            collider: Collider::cuboid(50.0, 50.0, 5.0),//Self::shape_to_collider(shape.clone(), 50.),
-        }
-    }
-
-    fn name_to_shape(module_name: String) -> ModuleShape {
-        match module_name.as_str() {
-            "simple_hull" => ModuleShape::Quad,
-            _ => panic!(),
+            collider: Self::shape_to_collider(module.shape, 50_f32),//Collider::cuboid(50.0, 50.0, 5.0),
         }
     }
 
@@ -139,6 +120,24 @@ impl Module {
             ModuleShape::Quad => Collider::cuboid(2. * module_size, 2. * module_size, 10.),
             ModuleShape::Hexrect => Collider::cuboid(3. * module_size, 2. * module_size, 10.),
             //_ => panic!(),
+        }
+    }
+}
+
+impl Module {
+    fn new(name: String) -> Self {
+        let shape = Self::name_to_shape(name.clone());
+        Module {
+            name: name.clone(),
+            shape: shape.clone(),
+            //collider: Collider::cuboid(50.0, 50.0, 5.0),//Self::shape_to_collider(shape.clone(), 50.),
+        }
+    }
+
+    fn name_to_shape(module_name: String) -> ModuleShape {
+        match module_name.as_str() {
+            "simple_hull" => ModuleShape::Quad,
+            _ => panic!(),
         }
     }
 }

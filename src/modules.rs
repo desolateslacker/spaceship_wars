@@ -91,18 +91,21 @@ pub struct ModuleBundle {
     facing: Facing,
     shape: ModuleShape,
     collider: Collider,
+    pickable: PickableBundle,
+    on_drag: EntityEvent,
 }
 
 impl ModuleBundle {
     pub fn new(module_name: String, transform: Transform) -> Self {
         ModuleBundle {
             module: Module::new(module_name.clone()),
-            transform: transform,
+            transform,
             rigid_body: RigidBody::Dynamic,
             facing: Facing::Up,
             shape: Self::name_to_shape(module_name.clone()),
             collider: Self::shape_to_collider(Self::name_to_shape(module_name), 50_f32),
-            //Collider::cuboid(50.0, 50.0, 5.0),
+            pickable: PickableBundle::default(),
+            on_drag: On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
         }
     }
 

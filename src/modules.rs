@@ -37,7 +37,8 @@ fn test(
         RigidBody::Dynamic,
         Collider::cuboid(50.0, 50.0, 5.0),
     ));
-    commands.spawn(ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(100.,0.,0.)));//, Collider::cuboid(50.0, 50.0, 5.0)));
+    ModuleBundle::spawn_module(commands,"simple_hull".to_string(), Transform::from_xyz(100.,0.,0.));
+    //commands.spawn(ModuleBundle::new("simple_hull".to_string(), Transform::from_xyz(100.,0.,0.)));//, Collider::cuboid(50.0, 50.0, 5.0)));
 }
 
 pub fn draw_modules(
@@ -91,8 +92,6 @@ pub struct ModuleBundle {
     facing: Facing,
     shape: ModuleShape,
     collider: Collider,
-    pickable: PickableBundle,
-    on_drag: EntityEvent,
 }
 
 impl ModuleBundle {
@@ -107,6 +106,18 @@ impl ModuleBundle {
             pickable: PickableBundle::default(),
             on_drag: On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
         }
+    }
+
+    pub spawn_module(
+        mut commands: Commands,
+        name: String,
+        pos: Transform,
+    ) {
+        commands.spawn((
+            Self::new(name, pos),
+            PickableBundle::default(),
+            On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
+        ));
     }
 
     fn name_to_shape(module_name: String) -> ModuleShape {

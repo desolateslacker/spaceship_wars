@@ -95,13 +95,13 @@ pub struct ModuleBundle {
 
 impl ModuleBundle {
     pub fn new(module_name: String, transform: Transform) -> Self {
-        let shape = Module::new(module_name);
+        let module = Module::new(module_name);
         ModuleBundle {
-            module: shape.clone(),
+            module: module.clone(),
             transform: transform,
             rigid_body: RigidBody::Dynamic,
             facing: Facing::Up,
-            collider: Self::shape_to_collider(shape, 50_f32),//Collider::cuboid(50.0, 50.0, 5.0),
+            collider: Self::shape_to_collider(module.shape, 50_f32),//Collider::cuboid(50.0, 50.0, 5.0),
         }
     }
 

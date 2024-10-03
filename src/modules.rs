@@ -96,12 +96,12 @@ pub struct ModuleBundle {
 impl ModuleBundle {
     pub fn new(module_name: String, transform: Transform) -> Self {
         ModuleBundle {
-            module: Module::new(&module_name),
+            module: Module::new(module_name),
             transform: transform,
             rigid_body: RigidBody::Dynamic,
             facing: Facing::Up,
-            shape: Self::name_to_shape(&module_name),
-            collider: Self::shape_to_collider(Self::shape, 50_f32),
+            shape: Self::name_to_shape(module_name),
+            collider: Self::shape_to_collider(shape, 50_f32),
             //Collider::cuboid(50.0, 50.0, 5.0),
         }
     }

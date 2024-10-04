@@ -48,13 +48,14 @@ impl Grid {
             painter.line(Vec3::ZERO, Vec3::Y * 50_f32 * grid.height);
             painter.translate(Vec3::X * 50_f32);
         }
+    }
 }
 
 pub fn spawn_grid(
-        mut commands: Commands,
-    ) {
-        commands.spawn((
-            Grid::new(9, 6),
-            TransformBundle::default(),
-        ));
+    mut commands: Commands,
+) {
+    commands.spawn((
+        Grid::new(9, 6),
+        TransformBundle::default(),
+    ));
 }

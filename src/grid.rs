@@ -36,7 +36,7 @@ impl Grid {
         mut painter: ShapePainter,
         grid: Query<(&Transform, &Grid)>,
     ) {
-        let (tf, grid) = grid.get_single_mut().expect("err");
+        let (tf, grid) = grid.get_single().expect("err");
         painter.reset();
         painter.circle(50_f32);
     }

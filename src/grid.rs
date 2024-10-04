@@ -18,7 +18,7 @@ struct Grid{
     width: i32,
     height: i32,
     storage: Vec<i32>,
-};
+}
 
 impl Grid {
     pub fn new(
@@ -38,12 +38,12 @@ impl Grid {
     ) {
         let (tf, grid) = grid.get_single_mut().expect("err");
         painter.reset();
-        painter.circle(50);
+        painter.circle(50_f32);
     }
 }
 
 pub fn spawn_grid(
-        commands: Commands,
+        mut commands: Commands,
     ) {
         commands.spawn((
             Grid::new(9, 6),

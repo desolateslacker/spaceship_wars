@@ -5,7 +5,7 @@ use bevy::{
     app::App,
 };
 use crate::modules::ModulesPlugin;
-use crate::modules::GridPlugin;
+use crate::grid::GridPlugin;
 
 pub struct GamePlugin;
 

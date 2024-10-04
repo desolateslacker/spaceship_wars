@@ -24,6 +24,6 @@ impl Plugin for GamePlugin {
             .init_state::<GameState>()
             .add_plugins(GridPlugin)
             .add_plugins(ModulesPlugin)
-            .add_systems(Startup, GridPlugin::spawn_grid);
+            .add_systems(Startup, grid::spawn_grid);
     }
 }

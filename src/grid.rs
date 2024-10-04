@@ -34,18 +34,19 @@ impl Grid {
 
     pub fn draw_grid(
         mut painter: ShapePainter,
-        grid: Query<&Transform, With<Grid>>,
+        grid: Query<(&Transform, &Grid)>,
     ) {
-        let grid = grid.get_single_mut().expect("err");
-    
+        let (tf, grid) = grid.get_single_mut().expect("err");
+        painter.reset();
+        painter.circle(50);
     }
+}
 
-    pub fn spawn_grid(
+pub fn spawn_grid(
         commands: Commands,
     ) {
         commands.spawn((
-            Grid,
+            Grid::new(9, 6),
             TransformBundle::default(),
         ));
-    }
 }

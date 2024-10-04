@@ -38,8 +38,16 @@ impl Grid {
     ) {
         let (tf, grid) = grid.get_single().expect("err");
         painter.reset();
-        painter.circle(50_f32);
-    }
+        for row in 0..=grid.height {
+            painter.line(Vec3::ZERO, Vec3::X * 50_f32 * grid.width);
+            painter.translate(Vec3::Y * 50_f32);
+        }
+
+        painter.reset();
+        for column in 0..=grid.width {
+            painter.line(Vec3::ZERO, Vec3::Y * 50_f32 * grid.height);
+            painter.translate(Vec3::X * 50_f32);
+        }
 }
 
 pub fn spawn_grid(

@@ -5,6 +5,8 @@ use bevy::{
     app::App,
 };
 use crate::modules::ModulesPlugin;
+use crate::modules::GridPlugin;
+
 pub struct GamePlugin;
 
 #[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
@@ -19,6 +21,8 @@ impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app
             .init_state::<GameState>()
-            .add_plugins(ModulesPlugin);
+            .add_plugins(GridPlugin)
+            .add_plugins(ModulesPlugin)
+            .add_systems(Startup, GridPlugin::spawn_grid);
     }
 }

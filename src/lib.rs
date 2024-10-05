@@ -5,6 +5,7 @@ use bevy::{
     prelude::*,
     app::App,
 };
+use bevy_mod_picking::prelude::*;
 use crate::modules::ModulesPlugin;
 use crate::grid::GridPlugin;
 
@@ -18,12 +19,9 @@ enum GameState {
     _Battle,
 }
 
-#[derive(Event)]
-struct DropModule(Entity, Option<Vec3>);
-
-impl From<ListenerInput<Pointer<DragEnd>>> for DropModule {
+impl From<ListenerInput<Pointer<DragEnd>>> for ModuleDropped {
     fn from(event: ListenerInput<Pointer<DragEnd>>) -> Self {
-        DropModule(event.target, event.hit.position)
+        ModuleDropped(event.target, event.hit.position)
     }
 }
 

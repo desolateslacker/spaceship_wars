@@ -39,13 +39,13 @@ impl Grid {
         let (tf, grid) = grid.get_single().expect("err");
         painter.reset();
         for row in 0..=grid.height {
-            painter.line(Vec3::ZERO, Vec3::X * 50_f32 * grid.width);
+            painter.line(Vec3::ZERO, Vec3::X * 50_f32 * grid.width as f32);
             painter.translate(Vec3::Y * 50_f32);
         }
 
         painter.reset();
         for column in 0..=grid.width {
-            painter.line(Vec3::ZERO, Vec3::Y * 50_f32 * grid.height);
+            painter.line(Vec3::ZERO, Vec3::Y * 50_f32 * grid.height as f32);
             painter.translate(Vec3::X * 50_f32);
         }
     }

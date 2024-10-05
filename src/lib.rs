@@ -33,6 +33,9 @@ impl Plugin for GamePlugin {
             .init_state::<GameState>()
             .add_plugins(GridPlugin)
             .add_plugins(ModulesPlugin)
+            .add_systems(Update, drop.run_if(on_event::<ModuleDropped>()))
             .add_systems(Startup, grid::spawn_grid);
     }
 }
+
+fn drop () {}

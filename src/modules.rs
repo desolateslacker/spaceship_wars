@@ -14,17 +14,23 @@ struct ModuleSize(f32);
 impl Plugin for ModulesPlugin {
     fn build(&self, app: &mut App) {
         app
-            .add_plugins(PhysicsPlugins::default())
-            .add_plugins(PhysicsDebugPlugin::default())
-            .add_plugins(Shape2dPlugin::default())
-            .add_plugins(DefaultPickingPlugins)
+            .add_plugins((
+                PhysicsPlugins::default(),
+                PhysicsDebugPlugin::default(),
+                Shape2dPlugin::default(),
+                DefaultPickingPlugins,
+            ))
             .insert_resource(DebugPickingMode::Noisy)
             .insert_resource(ModuleSize(50_f32))
             .insert_resource(Gravity(Vec3::NEG_Y * 10.))
+            .add_event(ModuleDropped)
             .add_systems(Startup, test)
             .add_systems(Update, draw_modules);
     }
 }
+
+#[derive(Event)]
+struct ModuleDropped;
 
 pub trait Snap {
     fn module_dropped();
@@ -120,7 +126,9 @@ impl ModuleBundle {
             TransformBundle::default(),
             PickableBundle::default(),
             On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
-            On::<Pointer<DragEnd>>::run(Snap::module_dropped);//target_insert(RigidBody::Dynamic),
+            On::<Pointer<DragEnd>>::send_event::<ModuleDropped>(),
+            //run(Snap::module_dropped),
+            //target_insert(RigidBody::Dynamic),
             On::<Pointer<Drag>>::target_component_mut::<Transform>(|drag, transform| {
                 transform.translation.x += drag.delta.x;
                 transform.translation.y -= drag.delta.y;

@@ -26,6 +26,9 @@ impl Plugin for ModulesPlugin {
     }
 }
 
+pub trait Snap {
+    fn module_dropped();
+}
 
 fn test(
     mut commands: Commands,
@@ -117,7 +120,7 @@ impl ModuleBundle {
             TransformBundle::default(),
             PickableBundle::default(),
             On::<Pointer<DragStart>>::target_insert(RigidBody::Static),
-            On::<Pointer<DragEnd>>::target_insert(RigidBody::Dynamic),
+            On::<Pointer<DragEnd>>::run(Snap::module_dropped);//target_insert(RigidBody::Dynamic),
             On::<Pointer<Drag>>::target_component_mut::<Transform>(|drag, transform| {
                 transform.translation.x += drag.delta.x;
                 transform.translation.y -= drag.delta.y;

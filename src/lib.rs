@@ -18,6 +18,15 @@ enum GameState {
     _Battle,
 }
 
+#[derive(Event)]
+struct DropModule(Entity, Option<Vec3>);
+
+impl From<ListenerInput<Pointer<DragEnd>>> for DropModule {
+    fn from(event: ListenerInput<Pointer<DragEnd>>) -> Self {
+        DropModule(event.target, event.hit.position)
+    }
+}
+
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app

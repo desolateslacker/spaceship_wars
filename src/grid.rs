@@ -55,7 +55,7 @@ impl Grid {
         }
     }
 
-    pub fn place_module(module: Entity, location: Location) {}
+    pub fn place_module(&self, module: Entity, location: Location) {}
 }
 
 pub fn spawn_grid(

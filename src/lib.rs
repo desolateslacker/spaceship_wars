@@ -7,6 +7,7 @@ use bevy::{
 };
 use bevy_mod_picking::prelude::*;
 use crate::modules::ModulesPlugin;
+use crate::modules::ModuleDropped;
 use crate::grid::GridPlugin;
 
 pub struct GamePlugin;

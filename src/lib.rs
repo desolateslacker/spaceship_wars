@@ -21,7 +21,7 @@ enum GameState {
 
 impl From<ListenerInput<Pointer<DragEnd>>> for ModuleDropped {
     fn from(event: ListenerInput<Pointer<DragEnd>>) -> Self {
-        ModuleDropped(event.target, event.hit.position)
+        ModuleDropped(event.target)
     }
 }
 

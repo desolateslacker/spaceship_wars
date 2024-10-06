@@ -37,4 +37,10 @@ impl Plugin for GamePlugin {
     }
 }
 
-fn drop () {}
+fn drop (
+    mut event_drop: EventReader<ModuleDropped>,
+) {
+    for event in event_drop.read() {
+        info! ("event: ", event.0);
+    }
+}

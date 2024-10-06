@@ -5,6 +5,7 @@ use bevy::{
 use bevy_vector_shapes::prelude::*;
 use avian3d::prelude::*;
 use bevy_mod_picking::prelude::*;
+use bevy_mod_picking::pointer::Location;
 
 pub struct ModulesPlugin;
 

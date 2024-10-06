@@ -55,7 +55,13 @@ impl Grid {
         }
     }
 
-    pub fn place_module(&self, module: Entity, location: Location) {}
+    pub fn place_module(
+        &self, 
+        module: Entity, 
+        location: Location
+    ) {
+        let mut commands = Commands::new();
+    }
 }
 
 pub fn spawn_grid(

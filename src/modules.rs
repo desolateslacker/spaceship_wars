@@ -30,7 +30,7 @@ impl Plugin for ModulesPlugin {
 }
 
 #[derive(Event)]
-pub struct ModuleDropped;
+pub struct ModuleDropped(Entity);
 
 pub trait Snap {
     fn module_dropped();

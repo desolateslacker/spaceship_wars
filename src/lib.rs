@@ -39,8 +39,15 @@ impl Plugin for GamePlugin {
 
 fn drop (
     mut event_drop: EventReader<ModuleDropped>,
+    grid_query: Query<&Grid>,
 ) {
     for event in event_drop.read() {
-        info! ("event: {:?}", event.0);
+        if let Ok(grid) = grid_query.get(event.0) {
+            if grid.check_space() {
+                
+            } else {
+                
+            }
+        }
     }
 }

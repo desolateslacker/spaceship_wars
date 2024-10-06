@@ -22,7 +22,7 @@ enum GameState {
 
 impl From<ListenerInput<Pointer<DragEnd>>> for ModuleDropped {
     fn from(event: ListenerInput<Pointer<DragEnd>>) -> Self {
-        ModuleDropped(event.target)
+        ModuleDropped(event.target, event.pointer_location)
     }
 }
 
@@ -42,12 +42,8 @@ fn drop (
     grid_query: Query<&Grid>,
 ) {
     for event in event_drop.read() {
-        if let Ok(grid) = grid_query.get(event.0) {
-            if grid.check_space() {
-                
-            } else {
-                
-            }
+        if let Ok(grid) = grid_query.get_single() {
+            grid.place_module(event.0, event.1);
         }
     }
 }

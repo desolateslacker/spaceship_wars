@@ -53,6 +53,8 @@ impl Grid {
             painter.translate(Vec3::X * 50_f32);
         }
     }
+
+    pub fn place_module(module: Entity, location: Location) {}
 }
 
 pub fn spawn_grid(

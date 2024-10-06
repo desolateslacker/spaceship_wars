@@ -3,6 +3,7 @@ use bevy::{
     color::palettes::css::*,
 };
 use bevy_vector_shapes::prelude::*;
+use bevy_mod_picking::pointer::Location;
 
 pub struct GridPlugin;
 
@@ -14,7 +15,7 @@ impl Plugin for GridPlugin {
 }
 
 #[derive(Component)]
-struct Grid{
+pub struct Grid{
     width: i32,
     height: i32,
     storage: Vec<i32>,

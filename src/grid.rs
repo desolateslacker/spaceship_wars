@@ -66,7 +66,8 @@ impl Grid {
         command_queue.push(move |world: &mut World| {
             world
                 .entity_mut(module_id)
-                .insert(RigidBody::Dynamic);
+                .insert(RigidBody::Dynamic)
+                .insert(Collider::cuboid(33., 43., 10.));
         });
     }
 }

@@ -47,10 +47,12 @@ fn drop (
     
     
     for event in event_drop.read() {
+        let mut value = grid.place_module(event.0, event.1.clone(), painter);
         painter.circle(57.);
         if let Ok(grid) = grid_query.get_single() {
             painter.line((0.,0.,0.).into(), (100., 0.,0.).into());
-            grid.place_module(event.0, event.1.clone(), painter);
+            value;
+            //grid.place_module(event.0, event.1.clone(), painter);
         }
     }
 }

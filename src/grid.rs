@@ -57,10 +57,15 @@ impl Grid {
 
     pub fn place_module(
         &self, 
-        module: Entity, 
+        module_id: Entity, 
         location: Location
     ) {
-        let mut commands = Commands::new();
+        let mut command_queue = CommandQueue::default();
+        command_queue.push(move |world: &mut World| {
+            world
+                .entity_mut(module_id)
+                .insert(RigidBody::DYNAMIC);
+        });
     }
 }
 

@@ -5,6 +5,7 @@ use bevy::{
     prelude::*,
     app::App,
 };
+use bevy_vector_shapes::prelude::*;
 use bevy_mod_picking::prelude::*;
 use crate::modules::ModulesPlugin;
 use crate::modules::ModuleDropped;
@@ -43,7 +44,7 @@ fn drop (
     grid_query: Query<&Grid>,
     mut painter: ShapePainter,
 ) {
-    use bevy_vector_shapes::prelude::*;
+    
     painter.circle(57.);
     for event in event_drop.read() {
         if let Ok(grid) = grid_query.get_single() {

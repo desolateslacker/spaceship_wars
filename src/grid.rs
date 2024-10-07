@@ -61,7 +61,9 @@ impl Grid {
         &self, 
         module_id: Entity, 
         location: Location
+        mut painter: ShapePainter,
     ) {
+        painter.circle(999.);
         let mut command_queue = CommandQueue::default();
         command_queue.push(move |world: &mut World| {
             world

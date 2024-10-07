@@ -66,7 +66,7 @@ impl Grid {
         command_queue.push(move |world: &mut World| {
             world
                 .entity_mut(module_id)
-                .insert(RigidBody::DYNAMIC);
+                .insert(RigidBody::Dynamic);
         });
     }
 }

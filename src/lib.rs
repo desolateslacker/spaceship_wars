@@ -41,7 +41,10 @@ impl Plugin for GamePlugin {
 fn drop (
     mut event_drop: EventReader<ModuleDropped>,
     grid_query: Query<&Grid>,
+    mut painter: ShapePainter,
 ) {
+    use bevy_vector_shapes::prelude::*;
+    painter.circle(57.);
     for event in event_drop.read() {
         if let Ok(grid) = grid_query.get_single() {
             grid.place_module(event.0, event.1.clone());

@@ -1,9 +1,11 @@
 use bevy::{
     prelude::*,
     color::palettes::css::*,
+    ecs::world::CommandQueue,
 };
 use bevy_vector_shapes::prelude::*;
 use bevy_mod_picking::pointer::Location;
+use avian3d::prelude::*;
 
 pub struct GridPlugin;
 

@@ -60,7 +60,7 @@ impl Grid {
     pub fn place_module(
         &self, 
         module_id: Entity, 
-        location: Location
+        location: Location,
         mut painter: ShapePainter,
     ) {
         painter.circle(999.);

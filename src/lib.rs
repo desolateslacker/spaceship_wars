@@ -42,7 +42,7 @@ impl Plugin for GamePlugin {
 fn drop (
     mut event_drop: EventReader<ModuleDropped>,
     grid_query: Query<&Grid>,
-    &mut painter: ShapePainter,
+    mut painter: &ShapePainter,
 ) {
     
     

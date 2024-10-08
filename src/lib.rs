@@ -51,7 +51,7 @@ fn drop (
         *painter.circle(57.);
         if let Ok(grid) = grid_query.get_single() {
             *painter.line((0.,0.,0.).into(), (100., 0.,0.).into());
-            value;
+            //value;
             grid.place_module(event.0, event.1.clone(), *painter);
         }
     }

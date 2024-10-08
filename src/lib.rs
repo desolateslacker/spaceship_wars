@@ -42,17 +42,17 @@ impl Plugin for GamePlugin {
 fn drop (
     mut event_drop: EventReader<ModuleDropped>,
     grid_query: Query<&Grid>,
-    mut painter: ShapePainter,
+    &mut painter: ShapePainter,
 ) {
     
     
     for event in event_drop.read() {
-        let mut value = grid.place_module(event.0, event.1.clone(), painter);
-        painter.circle(57.);
+        //let mut value = grid.place_module(event.0, event.1.clone(), painter);
+        *painter.circle(57.);
         if let Ok(grid) = grid_query.get_single() {
-            painter.line((0.,0.,0.).into(), (100., 0.,0.).into());
+            *painter.line((0.,0.,0.).into(), (100., 0.,0.).into());
             value;
-            //grid.place_module(event.0, event.1.clone(), painter);
+            grid.place_module(event.0, event.1.clone(), *painter);
         }
     }
 }

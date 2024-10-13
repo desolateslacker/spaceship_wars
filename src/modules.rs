@@ -1,3 +1,5 @@
+mod grid;
+
 use bevy::{
     prelude::*,
     color::palettes::css::*,
@@ -6,6 +8,7 @@ use bevy_vector_shapes::prelude::*;
 use avian3d::prelude::*;
 use bevy_mod_picking::prelude::*;
 use bevy_mod_picking::pointer::Location;
+use crate::grid::GridPlugin;
 
 pub struct ModulesPlugin;
 
@@ -20,6 +23,7 @@ impl Plugin for ModulesPlugin {
                 PhysicsDebugPlugin::default(),
                 Shape2dPlugin::default(),
                 DefaultPickingPlugins,
+                GridPlugin,
             ))
             .insert_resource(DebugPickingMode::Noisy)
             .insert_resource(ModuleSize(50_f32))

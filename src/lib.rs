@@ -1,5 +1,4 @@
 mod modules;
-mod grid;
 
 use bevy::{
     prelude::*,
@@ -9,8 +8,6 @@ use bevy_vector_shapes::prelude::*;
 use bevy_mod_picking::prelude::*;
 use crate::modules::ModulesPlugin;
 use crate::modules::ModuleDropped;
-use crate::grid::GridPlugin;
-use crate::grid::Grid;
 
 pub struct GamePlugin;
 
@@ -32,13 +29,12 @@ impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app
             .init_state::<GameState>()
-            .add_plugins(GridPlugin)
-            .add_plugins(ModulesPlugin)
-            .add_systems(Update, drop.run_if(on_event::<ModuleDropped>()))
-            .add_systems(Startup, grid::spawn_grid);
+            .add_plugins(ModulesPlugin);
+            //.add_systems(Update, drop.run_if(on_event::<ModuleDropped>()));
     }
 }
 
+/*
 fn drop (
     mut event_drop: EventReader<ModuleDropped>,
     grid_query: Query<&Grid>,
@@ -56,3 +52,4 @@ fn drop (
         }
     }
 }
+*/

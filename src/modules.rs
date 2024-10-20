@@ -8,7 +8,7 @@ use bevy_vector_shapes::prelude::*;
 use avian3d::prelude::*;
 use bevy_mod_picking::prelude::*;
 use bevy_mod_picking::pointer::Location;
-use crate::modules::GridPlugin;
+use crate::modules::grid::GridPlugin;
 
 pub struct ModulesPlugin;
 

@@ -1,10 +1,12 @@
-<!DOCTYPE html><html lang="en"><head>
-        <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <title>Bevy game</title> <!-- ToDo -->
         
         
-        <style type="text/css">body, html {
+        <style nonce="C7Srs2MpbtrH256G7aKPmQ==">body, html {
     height: 100%;
     overscroll-behavior: none;
 }
@@ -59,9 +61,7 @@ body {
     z-index: 2;
 }
 </style>
-    
-<link rel="preload" href="./spaceship_wars-889499221f76ad6f_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="./spaceship_wars-889499221f76ad6f.js"></head>
+    <link rel="modulepreload" href="./spaceship_wars-c8ff215a2d453d1b.js" crossorigin=anonymous integrity="sha384-xeB24xnHzJ75YCLNz/MKfqpSlB/ByccIhLeqJTNZRhNekklkGlGLxsHvOXZtQNhk"><link rel="preload" href="./spaceship_wars-c8ff215a2d453d1b_bg.wasm" crossorigin=anonymous integrity="sha384-NfraKfO/K+maE0lDM1KPW0rH8Rdhw4ab90Dy0cUcm6v4PstoEK2d1Oh/TfFxt2BN" as="fetch" type="application/wasm"></head>
     <body>
         <div class="game-container">
             <div class="lds-dual-ring"></div>
@@ -70,4 +70,15 @@ body {
             </canvas>
         </div>
     
-<script type="module">import init from './spaceship_wars-889499221f76ad6f.js';init('./spaceship_wars-889499221f76ad6f_bg.wasm');</script></body></html>
+<script type="module" nonce="X6113crR6tsvh7J5M73Oww==">
+import init, * as bindings from './spaceship_wars-c8ff215a2d453d1b.js';
+const wasm = await init('./spaceship_wars-c8ff215a2d453d1b_bg.wasm');
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>

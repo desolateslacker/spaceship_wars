@@ -29,8 +29,8 @@ impl Plugin for ModulesPlugin {
             .insert_resource(ModuleSize(50_f32))
             .insert_resource(Gravity(Vec3::NEG_Y * 10.))
             .add_event::<ModuleDropped>()
-            .add_systems(Startup, test)
-            .add_systems(Update, draw_modules);
+            .add_systems(Startup, test);
+            //.add_systems(Update, draw_modules);
     }
 }
 
